@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 import sample.model.Grid;
 import sample.model.Tile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static sample.model.Tile.TILE_SIZE;

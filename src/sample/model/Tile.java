@@ -6,11 +6,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import sample.list.TileColor;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static sample.Main.X_TILES;
-import static sample.Main.Y_TILES;
 import static sample.model.Grid.getNeighbors;
 
 public class Tile extends StackPane {
