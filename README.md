@@ -1,5 +1,3 @@
-# campo-minado-bombs
-
 <h1>Campo Minado!</h1> 
 
 <p align="center">
