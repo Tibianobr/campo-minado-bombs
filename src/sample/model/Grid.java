@@ -34,7 +34,7 @@ public class Grid {
                     int newY = tile.getY() + y;
 
                     // Check bounds
-                    if (newX > 0 && newX < X_TILES && newY > 0 && newY < Y_TILES) {
+                    if (newX >= 0 && newX < X_TILES && newY >= 0 && newY < Y_TILES) {
                         neighbors.add(grid[newX][newY]);
                     }
                 }
