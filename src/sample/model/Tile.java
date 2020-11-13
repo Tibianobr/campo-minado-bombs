@@ -60,7 +60,7 @@ public class Tile extends StackPane {
             long numBombs = getNeighbors(neighbor).stream().filter(Tile::getHasBomb).count();
             if (numBombs > 0 && !neighbor.getHasBomb())
                 neighbor.getValue().setText(String.valueOf(numBombs));
-            else if (numBombs == 0)
+            else if (numBombs == 0 && !neighbor.getHasBomb())
                 neighbor.getValue().setText("");
         }
 
