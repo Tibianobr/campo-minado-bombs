@@ -4,6 +4,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import sample.list.TileColor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ public class Tile extends StackPane {
         this.value = new Text();
 
         border.setStroke(Color.LIGHTGRAY);
+        border.setFill(Color.LIGHTGRAY);
         this.value.setFill(Color.WHITE);
 
         getChildren().addAll(border,value);
@@ -45,13 +47,17 @@ public class Tile extends StackPane {
         if (!hasBomb)
         {
             this.value.setText("X");
+            this.getValue().setFill(Color.BLACK);
         }
         else
         {
             this.value.setText("");
             long numBombs = getNeighbors(this).stream().filter(Tile::getHasBomb).count();
             if (numBombs > 0)
+            {
                 this.getValue().setText(String.valueOf(numBombs));
+                this.getValue().setFill(TileColor.getByBombNum(numBombs).selectedColor);
+            }
         }
         this.hasBomb = !hasBomb;
 
@@ -59,7 +65,13 @@ public class Tile extends StackPane {
         for (Tile neighbor: getNeighbors(this)) {
             long numBombs = getNeighbors(neighbor).stream().filter(Tile::getHasBomb).count();
             if (numBombs > 0 && !neighbor.getHasBomb())
+            {
                 neighbor.getValue().setText(String.valueOf(numBombs));
+                if (TileColor.getByBombNum(numBombs) != null)
+                {
+                    neighbor.getValue().setFill(TileColor.getByBombNum(numBombs).selectedColor);
+                }
+            }
             else if (numBombs == 0 && !neighbor.getHasBomb())
                 neighbor.getValue().setText("");
         }
